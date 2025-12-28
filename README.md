@@ -5,10 +5,28 @@ Add watermarks quickly and customize them easily!
 
 ---
 
-## ✨ Features
+## 🖼️ Watermark 
 
-- 🚀 Speed and simplicity
-- 🔧 Easy to customize
+![Classic watermark](assets/prism%20%281%29.jpg)
+
+![Standard watermark](assets/prism%20%285%29.jpg)
+
+![Minimal watermark](assets/prism%20%284%29.jpg)
+
+![Minimal watermark (no logo)](assets/prism%20%283%29.jpg)
+
+---
+
+## ✨ What can be customized in a watermark?
+
+- Main text fonts and EXIF data
+- Enable/disable display of EXIF information
+- Select the watermark location: top, bottom, left, right
+- Select a logo, add and save yours
+- Turn logo on/off
+- Select the theme (background) of the watermark: light or dark
+- Select a watermark template from the standard ones or write your own
+- Scalability - what percentage of the photo is the watermark (from 7.5% to 45%)
 
 
 ## 🛠️ Requirements
