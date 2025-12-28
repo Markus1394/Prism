@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:gravity="center"
+        android:width="1070dp"
+        android:height="1070dp">
+        <shape android:shape="oval">
+            <solid android:color="#FFFFFF" />
+        </shape>
+    </item>
+
+    <item
+        android:drawable="@drawable/sh_prism"
+        android:gravity="center"
+        android:width="1080dp"
+        android:height="1080dp" />
+
+</layer-list>

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Colors - Leica Red inspired -->
+    <color name="primary">#D32F2F</color>
+    <color name="primary_variant">#B71C1C</color>
+    <color name="on_primary">#FFFFFF</color>
+
+    <color name="logo_xmage">#FF0000</color>
+    <color name="logo_haselblad">#373535</color>
+
+    <!-- Secondary Colors -->
+    <color name="secondary">#424242</color>
+    <color name="secondary_variant">#212121</color>
+    <color name="on_secondary">#FFFFFF</color>
+
+    <!-- Background Colors -->
+    <color name="background_light">#FAFAFA</color>
+    <color name="background_dark">#121212</color>
+    <color name="surface_light">#FFFFFF</color>
+    <color name="surface_dark">#1E1E1E</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary_light">#212121</color>
+    <color name="text_primary_dark">#FFFFFF</color>
+    <color name="text_secondary_light">#757575</color>
+    <color name="text_secondary_dark">#B3B3B3</color>
+
+    <!-- Watermark Colors -->
+    <color name="watermark_bg_light">#FFFFFF</color>
+    <color name="watermark_bg_dark">#1A1A1A</color>
+    <color name="watermark_text_light">#FFFFFF</color>
+    <color name="watermark_text_dark">#1A1A1A</color>
+    <color name="watermark_divider">#9E9E9E</color>
+
+    <!-- UI Colors -->
+    <color name="overlay_background">#99000000</color>
+    <color name="selection_indicator_color">@color/primary</color>
+
+    <!-- Item colors (simple, not state list) -->
+    <color name="item_stroke_default">#E0E0E0</color>
+    <color name="item_stroke_selected">@color/primary</color>
+
+    <!-- Seed Color for Material You -->
+    <color name="seed">#D32F2F</color>
+
+    <color name="monochrome_logo_color_dark">#FFFFFF</color>
+    <color name="monochrome_logo_color_light">#000000</color>
+</resources>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/watermarkBG"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@color/watermark_bg_light">
+
+    <!-- Logo -->
+    <ImageView
+        android:id="@+id/watermarkLogo"
+        android:layout_width="36dp"
+        android:layout_height="36dp"
+        android:layout_marginEnd="12dp"
+        android:contentDescription="@string/cd_watermark_logo"
+        tools:src="@drawable/logo_prism" />
+
+    <!-- Main Text Only -->
+    <TextView
+        android:id="@+id/watermarkText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:textColor="@color/watermark_text_dark"
+        android:maxLines="1"
+        android:ellipsize="end"
+        tools:text="Shot on PRISM" />
+
+    <!-- Hidden EXIF (required by renderer but not shown) -->
+    <TextView
+        android:id="@+id/watermarkEXIFDataText"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:visibility="gone" />
+
+</LinearLayout>

@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PRISM - Template Documentation</title>
+    <style>
+        :root {
+            --bg-body: #ffffff;
+            --text-main: #24292f;
+            --text-secondary: #57606a;
+            --link: #0969da;
+            --border: #d0d7de;
+            --accent: #0969da;
+            --code-bg: #f6f8fa;
+            --code-header-bg: #eff1f3;
+            --code-border: #d0d7de;
+            --table-header-bg: #f6f8fa;
+            --table-row-even: #fbfcfd;
+            --btn-bg: #f6f8fa;
+            --btn-border: #d0d7de;
+            --btn-hover: #f3f4f6;
+            --syntax-key: #0550ae;
+            --syntax-string: #0a3069;
+            --syntax-number: #cf222e;
+            --syntax-bool: #cf222e;
+            --syntax-comment: #6e7781;
+        }
+
+        [data-theme="dark"] {
+            --bg-body: #0d1117;
+            --text-main: #c9d1d9;
+            --text-secondary: #8b949e;
+            --link: #58a6ff;
+            --border: #30363d;
+            --accent: #58a6ff;
+            --code-bg: #161b22;
+            --code-header-bg: #21262d;
+            --code-border: #30363d;
+            --table-header-bg: #161b22;
+            --table-row-even: #161b22;
+            --btn-bg: #21262d;
+            --btn-border: #30363d;
+            --btn-hover: #30363d;
+            --syntax-key: #79c0ff;
+            --syntax-string: #a5d6ff;
+            --syntax-number: #ff7b72;
+            --syntax-bool: #ff7b72;
+            --syntax-comment: #8b949e;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 20px 24px 60px;
+        }
+
+        h1, h2, h3 { margin-top: 1.5em; margin-bottom: 16px; font-weight: 600; }
+        h1 { font-size: 2em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+        h2 { font-size: 1.5em; border-bottom: 1px solid var(--border); padding-bottom: 0.3em; }
+        h3 { font-size: 1.25em; }
+        p, li { margin-bottom: 16px; font-size: 16px; }
+        a { color: var(--link); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        
+        p code, li code, td code {
+            background-color: var(--code-bg);
+            padding: 0.2em 0.4em;
+            border-radius: 6px;
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 85%;
+        }
+
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 40px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid var(--border);
+        }
+        .theme-toggle {
+            background: var(--btn-bg);
+            border: 1px solid var(--btn-border);
+            color: var(--text-main);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.2s;
+        }
+        .theme-toggle:hover { background-color: var(--btn-hover); border-color: var(--text-secondary); }
+
+        .code-container {
+            margin-bottom: 24px;
+            border: 1px solid var(--code-border);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .code-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: var(--code-header-bg);
+            padding: 8px 16px;
+            border-bottom: 1px solid var(--code-border);
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            font-size: 12px;
+            color: var(--text-secondary);
+            font-weight: 600;
+            user-select: none;
+        }
+
+        .lang-label {
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .copy-btn {
+            background: transparent;
+            border: none;
+            color: var(--text-secondary);
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            transition: background 0.2s, color 0.2s;
+        }
+        .copy-btn:hover {
+            background-color: rgba(128, 128, 128, 0.1);
+            color: var(--text-main);
+        }
+        .copy-btn svg { width: 14px; height: 14px; fill: currentColor; }
+
+        pre {
+            margin: 0;
+            padding: 16px;
+            background-color: var(--code-bg);
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        code {
+            font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+            font-size: 14px;
+            line-height: 1.5;
+            color: var(--text-main);
+        }
+
+        .table-wrapper {
+            overflow-x: auto;
+            margin-bottom: 24px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 600px;
+        }
+        th, td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--border);
+            text-align: left;
+        }
+        th { background-color: var(--table-header-bg); font-weight: 600; }
+        tr:last-child td { border-bottom: none; }
+        tr:nth-child(even) { background-color: var(--table-row-even); }
+
+        /* Styles for text-based preview removed/deprecated, replaced by images */
+        .preview-img {
+            width: 100%;
+            height: auto;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        .k { color: var(--syntax-key); font-weight: bold; }
+        .s { color: var(--syntax-string); }
+        .n { color: var(--syntax-number); }
+        .b { color: var(--syntax-bool); font-weight: bold; }
+        .c { color: var(--syntax-comment); font-style: italic; }
+
+        @media (max-width: 600px) {
+            .container { padding: 16px 16px 40px; }
+            h1 { font-size: 1.6em; }
+            h2 { font-size: 1.3em; }
+            pre { padding: 12px; }
+            code { font-size: 13px; }
+            .copy-btn span { display: none; }
+            .code-header { padding: 8px 12px; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">
+        <div style="font-size: 1.2rem; font-weight: 700;">PRISM Docs</div>
+        <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()">
+            <span id="themeText">Dark Mode</span>
+        </button>
+    </div>
+
+    <h1>Creating Templates</h1>
+    <p>Watermark templates in PRISM are described in <strong>JSON</strong> format. This allows flexible customization of appearance, offsets, and element positioning without writing application code.</p>
+
+    <h2>Base Structure</h2>
+    <p>Every template starts with an orientation (<code>layout</code>), general offsets (<code>padding</code>), and a list of elements (<code>elements</code>).</p>
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"layout"</span>: <span class="s">"horizontal"</span>,
+  <span class="k">"padding"</span>: <span class="n">24</span>,
+  <span class="k">"elements"</span>: [
+  ]
+}</code></pre>
+    </div>
+
+    <h3>Template Parameters</h3>
+    <div class="table-wrapper">
+        <table>
+            <thead><tr><th>Key</th><th>Type</th><th>Description</th><th>Values</th></tr></thead>
+            <tbody>
+                <tr><td><code>layout</code></td><td>string</td><td>Container orientation</td><td><code>"horizontal"</code>, <code>"vertical"</code></td></tr>
+                <tr><td><code>padding</code></td><td>int</td><td>Edge padding (dp)</td><td>0 - 100</td></tr>
+                <tr><td><code>elements</code></td><td>array</td><td>List of elements</td><td>Array of objects</td></tr>
+            </tbody>
+        </table>
+    </div>
+
+    <h2>Element Types</h2>
+
+    <h3>1. Logo (logo)</h3>
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"type"</span>: <span class="s">"logo"</span>,
+  <span class="k">"size"</span>: <span class="n">48</span>,
+  <span class="k">"marginEnd"</span>: <span class="n">16</span>
+}</code></pre>
+    </div>
+
+    <h3>2. Main Text (main_text)</h3>
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"type"</span>: <span class="s">"main_text"</span>,
+  <span class="k">"size"</span>: <span class="n">18</span>,
+  <span class="k">"bold"</span>: <span class="b">true</span>,
+  <span class="k">"marginBottom"</span>: <span class="n">4</span>
+}</code></pre>
+    </div>
+
+    <h3>3. EXIF Data (exif_text)</h3>
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"type"</span>: <span class="s">"exif_text"</span>,
+  <span class="k">"size"</span>: <span class="n">12</span>,
+  <span class="k">"alpha"</span>: <span class="n">0.7</span>
+}</code></pre>
+    </div>
+
+    <h3>4. Divider (divider)</h3>
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"type"</span>: <span class="s">"divider"</span>,
+  <span class="k">"width"</span>: <span class="n">2</span>,
+  <span class="k">"height"</span>: <span class="n">40</span>,
+  <span class="k">"marginEnd"</span>: <span class="n">16</span>,
+  <span class="k">"alpha"</span>: <span class="n">0.3</span>
+}</code></pre>
+    </div>
+
+    <h3>5. Group (text_group)</h3>
+    <p>Used for vertical grouping of elements within a horizontal layout.</p>
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"type"</span>: <span class="s">"text_group"</span>,
+  <span class="k">"children"</span>: [
+    { <span class="k">"type"</span>: <span class="s">"main_text"</span>, <span class="k">"size"</span>: <span class="n">18</span> },
+    { <span class="k">"type"</span>: <span class="s">"exif_text"</span>, <span class="k">"size"</span>: <span class="n">12</span> }
+  ]
+}</code></pre>
+    </div>
+
+    <h2>Template Examples</h2>
+
+    <h3>Example 1: Standard</h3>
+    <p>Logo on the left, divider, then text.</p>
+    
+    <img src="watermark_horizontal_standart.jpg" alt="Standard Template" class="preview-img">
+    
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"layout"</span>: <span class="s">"horizontal"</span>,
+  <span class="k">"padding"</span>: <span class="n">24</span>,
+  <span class="k">"elements"</span>: [
+    {
+      <span class="k">"type"</span>: <span class="s">"logo"</span>,
+      <span class="k">"size"</span>: <span class="n">48</span>,
+      <span class="k">"marginEnd"</span>: <span class="n">16</span>
+    },
+    {
+      <span class="k">"type"</span>: <span class="s">"divider"</span>,
+      <span class="k">"width"</span>: <span class="n">2</span>,
+      <span class="k">"height"</span>: <span class="n">40</span>,
+      <span class="k">"marginEnd"</span>: <span class="n">16</span>,
+      <span class="k">"alpha"</span>: <span class="n">0.3</span>
+    },
+    {
+      <span class="k">"type"</span>: <span class="s">"text_group"</span>,
+      <span class="k">"children"</span>: [
+        {
+          <span class="k">"type"</span>: <span class="s">"main_text"</span>,
+          <span class="k">"size"</span>: <span class="n">18</span>,
+          <span class="k">"bold"</span>: <span class="b">true</span>
+        },
+        {
+          <span class="k">"type"</span>: <span class="s">"exif_text"</span>,
+          <span class="k">"size"</span>: <span class="n">12</span>,
+          <span class="k">"marginTop"</span>: <span class="n">4</span>,
+          <span class="k">"alpha"</span>: <span class="n">0.7</span>
+        }
+      ]
+    }
+  ]
+}</code></pre>
+    </div>
+
+    <h3>Example 2: Minimal</h3>
+    <p>Simple layout without dividers. Logo and text side by side.</p>
+    
+    <img src="watermark_horizontal_minimal.jpg" alt="Minimal Template" class="preview-img">
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"layout"</span>: <span class="s">"horizontal"</span>,
+  <span class="k">"padding"</span>: <span class="n">20</span>,
+  <span class="k">"elements"</span>: [
+    {
+      <span class="k">"type"</span>: <span class="s">"logo"</span>,
+      <span class="k">"size"</span>: <span class="n">32</span>,
+      <span class="k">"marginEnd"</span>: <span class="n">12</span>
+    },
+    {
+      <span class="k">"type"</span>: <span class="s">"text_group"</span>,
+      <span class="k">"children"</span>: [
+        {
+          <span class="k">"type"</span>: <span class="s">"main_text"</span>,
+          <span class="k">"size"</span>: <span class="n">15</span>,
+          <span class="k">"bold"</span>: <span class="b">true</span>
+        }
+      ]
+    }
+  ]
+}</code></pre>
+    </div>
+
+    <h3>Example 3: Classic</h3>
+    <p>Text on the left, logo on the right. Parameter <code>weight: 1</code> makes the text take up all available space.</p>
+    
+    <img src="watermark_horizontal_classic.jpg" alt="Classic Template" class="preview-img">
+
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"layout"</span>: <span class="s">"horizontal"</span>,
+  <span class="k">"padding"</span>: <span class="n">24</span>,
+  <span class="k">"elements"</span>: [
+    {
+      <span class="k">"type"</span>: <span class="s">"text_group"</span>,
+      <span class="k">"weight"</span>: <span class="n">1</span>,
+      <span class="k">"children"</span>: [
+        {
+          <span class="k">"type"</span>: <span class="s">"main_text"</span>,
+          <span class="k">"size"</span>: <span class="n">20</span>,
+          <span class="k">"bold"</span>: <span class="b">true</span>
+        },
+        {
+          <span class="k">"type"</span>: <span class="s">"exif_text"</span>,
+          <span class="k">"size"</span>: <span class="n">11</span>,
+          <span class="k">"marginTop"</span>: <span class="n">6</span>
+        }
+      ]
+    },
+    {
+      <span class="k">"type"</span>: <span class="s">"logo"</span>,
+      <span class="k">"size"</span>: <span class="n">56</span>,
+      <span class="k">"marginStart"</span>: <span class="n">24</span>
+    }
+  ]
+}</code></pre>
+    </div>
+
+    <h3>Example 4: Vertical (Sidebar)</h3>
+    <p>For watermarks placed on the left or right side. Use <code>rotation: 90</code>.</p>
+    <div class="code-container">
+        <div class="code-header">
+            <span class="lang-label">JSON</span>
+            <button class="copy-btn" onclick="copyCode(this)">
+                <svg viewBox="0 0 24 24"><path d="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z"/></svg>
+                <span>Copy</span>
+            </button>
+        </div>
+        <pre><code>{
+  <span class="k">"layout"</span>: <span class="s">"vertical"</span>,
+  <span class="k">"padding"</span>: <span class="n">16</span>,
+  <span class="k">"elements"</span>: [
+    {
+      <span class="k">"type"</span>: <span class="s">"logo"</span>,
+      <span class="k">"size"</span>: <span class="n">40</span>,
+      <span class="k">"marginBottom"</span>: <span class="n">12</span>
+    },
+    {
+      <span class="k">"type"</span>: <span class="s">"main_text"</span>,
+      <span class="k">"size"</span>: <span class="n">14</span>,
+      <span class="k">"bold"</span>: <span class="b">true</span>,
+      <span class="k">"rotation"</span>: <span class="n">90</span>
+    },
+    {
+      <span class="k">"type"</span>: <span class="s">"exif_text"</span>,
+      <span class="k">"size"</span>: <span class="n">10</span>,
+      <span class="k">"marginTop"</span>: <span class="n">12</span>,
+      <span class="k">"rotation"</span>: <span class="n">90</span>,
+      <span class="k">"alpha"</span>: <span class="n">0.7</span>
+    }
+  ]
+}</code></pre>
+    </div>
+
+    <h2>How to Add a Template</h2>
+    <p>You can add a template in two ways:</p>
+    
+    <h3>Method 1: From File</h3>
+    <ol>
+        <li>Create a file with the <code>.json</code> extension on your phone.</li>
+        <li>Copy the code from an example you like into it and save.</li>
+        <li>In the app, tap <strong>Style</strong> &rarr; <strong>+ Add Template</strong> &rarr; <strong>Load from file</strong>.</li>
+    </ol>
+
+    <h3>Method 2: Manually</h3>
+    <ol>
+        <li>Tap the <strong>Copy</strong> button above a code example.</li>
+        <li>In the app, tap <strong>+ Add Template</strong>.</li>
+        <li>Paste the code into the <strong>Template JSON</strong> field.</li>
+        <li>Enter a name and tap <strong>Add</strong>.</li>
+    </ol>
+
+</div>
+
+<script>
+    const html = document.documentElement;
+    const themeText = document.getElementById('themeText');
+    const savedTheme = localStorage.getItem('theme');
+    const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+    function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        themeText.innerText = theme === 'dark' ? 'Light Mode' : 'Dark Mode';
+        localStorage.setItem('theme', theme);
+    }
+
+    if (savedTheme) {
+        applyTheme(savedTheme);
+    } else if (systemDark) {
+        applyTheme('dark');
+    }
+
+    function toggleTheme() {
+        const current = html.getAttribute('data-theme');
+        applyTheme(current === 'dark' ? 'light' : 'dark');
+    }
+
+    function copyCode(btn) {
+        const codeElement = btn.parentElement.nextElementSibling.querySelector('code');
+        const text = codeElement.innerText;
+
+        navigator.clipboard.writeText(text).then(() => {
+            const originalHtml = btn.innerHTML;
+            btn.innerHTML = `
+                <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                <span>Copied!</span>
+            `;
+            btn.style.color = 'var(--accent)';
+            setTimeout(() => {
+                btn.innerHTML = originalHtml;
+                btn.style.color = '';
+            }, 2000);
+        }).catch(err => {
+            console.error('Copy error', err);
+            btn.innerText = 'Error';
+        });
+    }
+</script>
+
+</body>
+</html>

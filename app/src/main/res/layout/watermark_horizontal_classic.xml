@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/watermarkBG"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingHorizontal="32dp"
+    android:paddingVertical="20dp"
+    android:gravity="center_vertical"
+    android:background="@color/watermark_bg_light">
+
+    <!-- Text Info on Left -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/watermarkText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/watermark_text_dark"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:letterSpacing="0.05"
+            tools:text="Shot on PRISM" />
+
+        <TextView
+            android:id="@+id/watermarkEXIFDataText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:textSize="11sp"
+            android:textColor="@color/watermark_text_dark"
+            android:alpha="0.6"
+            android:maxLines="1"
+            android:ellipsize="end"
+            android:letterSpacing="0.02"
+            tools:text="Pixel 10 XL • ISO 100 • 26mm • f/1.8 • 1/60s" />
+
+    </LinearLayout>
+
+    <!-- Logo on Right -->
+    <ImageView
+        android:id="@+id/watermarkLogo"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="24dp"
+        android:contentDescription="@string/cd_watermark_logo"
+        tools:src="@drawable/logo_prism" />
+
+</LinearLayout>

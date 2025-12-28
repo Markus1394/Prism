@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="8dp"
+    app:cardElevation="1dp"
+    app:strokeWidth="2dp"
+    app:strokeColor="@color/card_stroke_color"
+    app:checkedIcon="@null">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="12dp"
+        android:minWidth="100dp"
+        android:gravity="center_vertical">
+
+        <View
+            android:id="@+id/selectionIndicator"
+            android:layout_width="4dp"
+            android:layout_height="24dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/selection_indicator"
+            android:visibility="invisible" />
+
+        <TextView
+            android:id="@+id/fontNameText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textAppearance="?attr/textAppearanceBodyMedium"
+            android:maxLines="1"
+            android:ellipsize="end"
+            tools:text="Roboto" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

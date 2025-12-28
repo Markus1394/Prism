@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp"
+            android:minHeight="72dp">
+
+            <ImageView
+                android:id="@+id/positionIcon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:layout_marginBottom="6dp"
+                android:contentDescription="@null"
+                app:tint="?attr/colorOnSurface"
+                tools:src="@drawable/ic_position_bottom" />
+
+            <TextView
+                android:id="@+id/positionNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceLabelSmall"
+                android:maxLines="1"
+                tools:text="Bottom" />
+
+        </LinearLayout>
+
+        <View
+            android:id="@+id/selectionOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/selection_overlay"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>

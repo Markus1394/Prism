@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="4dp"
+    android:clickable="true"
+    android:focusable="true"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:padding="12dp">
+
+            <FrameLayout
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_marginBottom="8dp">
+
+                <ImageView
+                    android:id="@+id/logoImage"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="fitCenter"
+                    android:contentDescription="@string/cd_logo_preview"
+                    tools:src="@drawable/logo_prism" />
+
+                <ImageView
+                    android:id="@+id/noLogoIcon"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:src="@drawable/ic_no_logo"
+                    android:scaleType="fitCenter"
+                    android:visibility="gone"
+                    android:alpha="0.5"
+                    android:contentDescription="@string/logo_none" />
+
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/logoNameText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:textAppearance="?attr/textAppearanceBodySmall"
+                android:maxLines="1"
+                android:ellipsize="end"
+                tools:text="Leica" />
+
+        </LinearLayout>
+
+        
+        <View
+            android:id="@+id/selectionOverlay"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/selection_overlay"
+            android:visibility="gone" />
+
+        
+        <ImageButton
+            android:id="@+id/deleteButton"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="top|end"
+            android:layout_margin="4dp"
+            android:background="@drawable/bg_delete_button"
+            android:src="@drawable/ic_close"
+            android:scaleType="center"
+            android:contentDescription="@string/delete"
+            android:visibility="gone"
+            app:tint="@android:color/white"
+            tools:visibility="visible" />
+
+    </FrameLayout>
+
+</com.google.android.material.card.MaterialCardView>
